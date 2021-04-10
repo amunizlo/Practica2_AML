@@ -2,10 +2,8 @@
 
 volatile int interruptCounter;
 int totalInterruptCounter;
-
 hw_timer_t * timer = NULL;
 portMUX_TYPE timerMux = portMUX_INITIALIZER_UNLOCKED;
-
 void IRAM_ATTR onTimer() {
     portENTER_CRITICAL_ISR(&timerMux);
     interruptCounter++;
@@ -29,7 +27,7 @@ void loop() {
 
         totalInterruptCounter++;
 
-        Serial.print("An interrupt as occurred. Total number: ");
+        Serial.print("An interrupt has occurred. Total number: ");
         Serial.println(totalInterruptCounter);
     }
 }
